@@ -1,5 +1,4 @@
 //
-//  Copyright (c) 2012 Parse. All rights reserved.
 
 #import "AppDelegate.h"
 #import "BlogTableViewController.h"

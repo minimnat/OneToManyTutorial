@@ -1,5 +1,4 @@
 //
-//  Copyright (c) 2012 Parse. All rights reserved.
 
 #import "BlogTableViewController.h"
 #import "NewPostViewController.h"
