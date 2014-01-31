@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.ParseAnalytics;
@@ -19,7 +18,6 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
 
 public class PostListActivity extends ListActivity {
 
@@ -33,6 +31,7 @@ public class PostListActivity extends ListActivity {
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, posts);
 		setListAdapter(adapter);
+		updatePostList();
 	}
 
 	@Override
@@ -50,23 +49,7 @@ public class PostListActivity extends ListActivity {
 		switch (item.getItemId()) {
 
 		case R.id.action_refresh: {
-			// Make sure our anonymous user has been created before
-			// querying
-			ParseUser.getCurrentUser().saveInBackground(new SaveCallback() {
-				
-				@Override
-				public void done (ParseException e) {
-					if (e == null) {
-						updatePostList();
-					} else {
-						Toast.makeText(getApplicationContext(), 
-								"Error saving: " + e.getMessage(), 
-								Toast.LENGTH_SHORT)
-								.show();
-					}
-				}
-				
-			});
+			updatePostList();
 			break;
 		}
 
@@ -84,7 +67,7 @@ public class PostListActivity extends ListActivity {
 
 		// Restrict to cases where the author is the current user.
 		// Note that you should pass in a ParseUser and not the
-		// String representation of that user
+		// String reperesentation of that user
 		query.whereEqualTo("author", ParseUser.getCurrentUser());
 		// Run the query
 		query.findInBackground(new FindCallback<ParseObject>() {

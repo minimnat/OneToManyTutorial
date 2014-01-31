@@ -48,7 +48,7 @@
 - (void)addPostButtonHandler:(id)sender 
 {
     NewPostViewController *newPostViewController = [[NewPostViewController alloc] init];
-    [self presentModalViewController:[[UINavigationController alloc] initWithRootViewController:newPostViewController] animated:YES];
+    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:newPostViewController] animated:YES completion:nil];
 }
 
 

@@ -34,7 +34,7 @@
     [newPost setObject:[textView text] forKey:@"textContent"];
     [newPost setObject:[PFUser currentUser] forKey:@"author"]; // One-to-Many relationship created here!
     
-    //Set ACL permissions for added security
+    // Set ACL permissions for added security
     PFACL *postACL = [PFACL ACLWithUser:[PFUser currentUser]];
     [postACL setPublicReadAccess:YES];
     [newPost setACL:postACL];
@@ -42,14 +42,14 @@
     // Save new Post object in Parse
     [newPost saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
-            [self dismissModalViewControllerAnimated:YES]; // Dismiss the viewController upon success
+            [self dismissViewControllerAnimated:YES completion:nil]; // Dismiss the viewController upon success
         }
     }];
 }
 
 - (void)cancelButtonTouchHandler:(id)sender 
 {
-    [self dismissModalViewControllerAnimated:YES];   
+    [self dismissViewControllerAnimated:YES completion:nil]; // Dismiss the viewController upon cancel
 }
 
 @end
