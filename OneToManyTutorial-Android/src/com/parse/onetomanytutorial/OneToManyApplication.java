@@ -21,7 +21,7 @@ public class OneToManyApplication extends Application {
 		/*
 		 * Fill in this section with your Parse credentials
 		 */
-		Parse.initialize(this, "YOUR_APP_ID", "YOUR_CLIENT_KEY");
+		Parse.initialize(this, "7nAuWaGiKovuuXQmGqUF0foP3RAFhSJ2KpLufbaT", "iXokVvjZf340Ke1pPzShPTLPFsihMUdXP0EDSvZx");
 
 		/*
 		 * This app lets an anonymous user create and save blog posts.
