@@ -18,6 +18,39 @@ public class OneToManyApplication extends Application {
 	public void onCreate() {
 		super.onCreate();
 
+	@Override
+        public void onClick(View v) {
+                     
+  // Create the Post object
+  ParseObject post = new ParseObject("Post");
+  post.put("textContent", postContent.getText().toString());
+                     
+  // Create an author relationship with the current user
+  post.put("Nat", ParseUser.getCurrentUser());
+                     
+  // Save the post and return
+  post.saveInBackground(new SaveCallback () {
+ 
+    @Override
+    public void done(ParseException e) {
+      if (e == null) {
+        setResult(RESULT_OK);
+        finish();
+      } else {
+        Toast.makeText(getApplicationContext(),
+        "Error saving: " + e.getMessage(),
+               Toast.LENGTH_SHORT)
+               .show();
+      }
+    }
+ 
+  });
+                           
+  getActivity().setResult(Activity.RESULT_OK);
+  getActivity().finish();
+                     
+}
+		Parse.initialize(this, "7nAuWaGiKovuuXQmGqUF0foP3RAFhSJ2KpLufbaT", "iXokVvjZf340Ke1pPzShPTLPFsihMUdXP0EDSvZx");
 		/*
 		 * Fill in this section with your Parse credentials
 		 */
